@@ -1,3 +1,4 @@
+<!-- INI APP BLADE BUAT LANDING PAGE AJA -->
 <!DOCTYPE html>
 <html lang="id">
 <head>

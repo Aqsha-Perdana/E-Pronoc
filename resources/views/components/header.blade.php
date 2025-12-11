@@ -12,12 +12,12 @@
     {{-- Navigation --}}
     <nav class="flex items-center gap-4">
 
-        <a href="{{ route('dashboard') }}"
+        <a href="{{ route('dashboard-admin') }}"
             class="px-5 py-2 rounded-md flex items-center gap-2
-          {{ request()->routeIs('dashboard') ? 'bg-red-600 text-white' : 'bg-gray-200 text-black' }}">
+          {{ request()->routeIs('dashboard-admin') ? 'bg-red-600 text-white' : 'bg-gray-200 text-black' }}">
 
         <i class="fa-solid fa-house 
-        {{ request()->routeIs('dashboard') ? 'text-white' : 'text-black' }}">
+        {{ request()->routeIs('dashboard-admin') ? 'text-white' : 'text-black' }}">
         </i> Dashboard 
     </a>
 

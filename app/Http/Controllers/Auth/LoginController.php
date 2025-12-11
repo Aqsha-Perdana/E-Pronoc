@@ -47,7 +47,7 @@ class LoginController extends Controller
 
         // Cek apakah user adalah admin
         if (Auth::user()->user_group === 'admin') {
-            return redirect('dashboard')->with('success', 'Berhasil login sebagai Admin');
+            return redirect('dashboard-admin')->with('success', 'Berhasil login sebagai Admin');
         }
 
         // Jika bukan admin → logout dan tolak
@@ -85,7 +85,7 @@ class LoginController extends Controller
 
         // Cek apakah user adalah peneliti
         if (Auth::user()->user_group === 'peneliti') {
-            return redirect('researcher/dashboard')->with('success', 'Berhasil login sebagai Peneliti');
+            return redirect('dashboard-peneliti')->with('success', 'Berhasil login sebagai Peneliti');
         }
 
         // Jika bukan peneliti → logout dan tolak
@@ -96,41 +96,78 @@ class LoginController extends Controller
     return redirect('researcher')->withErrors('Email atau password salah.');
     }
     public function register(){
-        return view('researcher/register');
+    return view('researcher/register');
+}
+
+public function create(Request $request){
+
+    // Simpan input sementara (agar form tidak kosong jika gagal)
+    Session::flash('name', $request->name);
+    Session::flash('email', $request->email);
+    Session::flash('notelp', $request->notelp);
+
+    // VALIDASI
+    $request->validate([
+        'name'     => 'required',
+        'email'    => 'required|email|unique:users',
+        'notelp'    => 'nullable|string|max:20',
+
+        // Password + Konfirmasi
+        'password'              => 'required|min:6',
+        'password_confirmation' => 'required|same:password',
+
+        // // Captcha
+        // 'g-recaptcha-response' => 'required'
+    ],[
+        'name.required'             => 'Nama wajib diisi',
+        'email.required'            => 'Email wajib diisi',
+        'email.email'               => 'Silakan masukkan email valid',
+        'email.unique'              => 'Email sudah pernah digunakan',
+        'notelp.max'                 => 'Nomor telepon maksimal 20 karakter',
+
+        'password.required'         => 'Password wajib diisi',
+        'password.min'              => 'Password minimal 6 karakter',
+        'password_confirmation.required' => 'Konfirmasi password wajib diisi',
+        'password_confirmation.same'     => 'Konfirmasi password tidak sama',
+
+        // 'g-recaptcha-response.required' => 'Captcha wajib diisi'
+    ]);
+
+    // // VALIDASI CAPTCHA (SERVER-SIDE)
+    // $captcha = $request->{'g-recaptcha-response'};
+    //     $secretKey = env('RECAPTCHA_SECRET_KEY');
+
+    //     $verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$secretKey}&response={$captcha}");
+    //     $captchaSuccess = json_decode($verify);
+
+    //     if (!$captchaSuccess->success || $captchaSuccess->score < 0.5) {
+    //         return back()->withErrors(['captcha' => 'Captcha gagal, silakan coba lagi.']);
+    // }
+
+
+    // SIMPAN USER
+    $data = [
+        'name'     => $request->name,
+        'email'    => $request->email,
+        'notelp'    => $request->notelp,
+        'institution'=> $request->institution,
+        'photo'=> $request->photo,
+        'password' => Hash::make($request->password),
+    ];
+
+    User::create($data);
+
+    // AUTO LOGIN
+    $infologin = [
+        'email'    => $request->email,
+        'password' => $request->password,
+    ];
+
+    if(Auth::attempt($infologin)){
+        return redirect('dashboard')->with('success', Auth::user()->name . ' berhasil login');
+    } else {
+        return redirect('admin')->withErrors('Username atau password tidak sesuai');
     }
-    public function create(Request $request){
-        Session::flash('name', $request->name);
-        Session::flash('email', $request->email);
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6'
-        ], [
-            'name.required'=> 'Nama Wajib Diisi',
-            'email.required' => 'Email Wajib Diisi',
-            'email.email'=> 'Silakan Masukkan Email Valid',
-            'email.unique'=> 'Email sudah pernah digunakan, silakan gunakan email lain',
-            'password.required' => 'Password wajib diisi',
-            'password.min'=>'Password Minimal 6 Karakter'
-        ]);
+}
 
-        $data=[
-            'name'=> $request->name,
-            'email'=> $request->email,
-            'password'=> Hash::make($request->password)
-        ];
-        User::create($data);
-
-        $infologin = [
-            'email'=> $request->email,
-            'password'=> $request->password,
-        ];
-
-        if(Auth::attempt($infologin)){
-            return redirect('dashboard')-> with('success',Auth::user()->name .'berhasil login');
-        }
-        else{
-            return redirect('admin')->withErrors('Username dan password tidak sesuai');
-        }
-    }
 }

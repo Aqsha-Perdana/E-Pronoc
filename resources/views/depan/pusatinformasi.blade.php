@@ -16,7 +16,7 @@
                     </h1>
                     
                     <p class="hero-description">
-                        <span class="highlight">e-Pronoc</span> (Proposal NOC Elektronik) adalah sistem digital yang
+                        <span class="highlight">E-Pronoc</span> (Proposal NOC Elektronik) adalah sistem digital yang
                         dirancang untuk mempermudah proses pengajuan, pengelolaan, dan
                         persetujuan proposal NOC secara terintegrasi. Aplikasi ini
                         menghadirkan solusi dalam tiga mitra utama yang membaca sistem

@@ -2,29 +2,18 @@
 
 use App\Http\Controllers\DepanController;
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\FundRealizationController;
-use App\Http\Controllers\DepanController;
 use App\Livewire\ProposalWizard;
 use App\Livewire\FundRealizationReport;
 use App\Livewire\FundRealizationReportEdit;
 use App\Livewire\FundRealizationReportShow; // Make sure to import this
 use App\Livewire\Profile;
-=======
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProposalSelectionController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SkillController;  
-use App\Http\Controllers\ProposalController;
-use App\Http\Controllers\FundRealizationController;
-use App\Livewire\ProposalWizard;
-use App\Livewire\FundRealizationReport;
-use App\Livewire\FundRealizationReportEdit;
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
+use App\Http\Controllers\SkillController;
+use App\Http\Controllers\ProfileController;  
 
 
 /*s
@@ -32,8 +21,6 @@ use App\Livewire\FundRealizationReportEdit;
 | Web Routes
 |--------------------------------------------------------------------------
 */
-
-<<<<<<< HEAD
 // =================================================================
 // 1. AUTHENTICATION ROUTES (GUEST)
 // =================================================================
@@ -55,33 +42,12 @@ Route::get("/logout", function(){
 });
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-
-=======
-////// NAVIGASI HEADERRRRRRRRR ///////////////////
-// Route::get('/', function () {
-//     return view('landingpage');
-// })->name('home');
-
-//PERLOGIN REGISTERAN
-Route::get('/admin', [LoginController::class, 'showAdminLogin'])->name('login.admin');
-Route::post('/admin/login', [LoginController::class, 'loginAdmin'])->name('login.admin.submit');
-Route::get('/admin/logout', [LoginController::class, 'logout']);
-Route::get('/researcher', [LoginController::class, 'showResearcherLogin'])->name('login.researcher');
-Route::post('/researcher/login', [LoginController::class, 'loginResearcher'])->name('login.researcher.submit');
-Route::get('/researcher/register', [LoginController::class, 'register']);
-Route::post('/researcher/create', [LoginController::class, 'create']);
-Route::get("/logout", function(){
-    return view("logout");
-});
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
-
 //NAVIGASI DI LANDING PAGE//
 Route::get('/', [DepanController::class,'index']);
 Route::get('/pusatinformasi', [DepanController::class,'pusatinformasi']);
 Route::get('/proyek', [DepanController::class,'proyek']);
 Route::get('/tentang', [DepanController::class,'tentang']);
 
-<<<<<<< HEAD
 // =================================================================
 // 2. PROTECTED ROUTES (REQUIRES LOGIN)
 // =================================================================
@@ -130,7 +96,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/fund-realization/{id}/download-pdf', [FundRealizationController::class, 'downloadPdf'])->name('report.fund.download');
 
 });
-=======
+
 
 
 ///////// NAVIGASI DI HALAMAN ADMIN //////////////
@@ -203,60 +169,3 @@ Route::prefix('proposalsel')->name('proposalsel.')->group(function () {
 });
 
 Route::post('/proposalsel/{page?}', [ProposalController::class, 'accept'])->name('proposal.done');
-
-// Route Dashboard (Pastikan name-nya 'dashboard' karena dipakai di redirect Livewire)
-Route::get('/proposal-submission', [ProposalController::class, 'index'])->name('mainproposalutama');
-// Pastikan sudah dibungkus middleware auth jika perlu
-Route::get('/proposals/create', ProposalWizard::class)->name('proposals.create');
-// Route Download PDF
-Route::get('/proposal/{id}/download', [ProposalController::class, 'download'])->name('proposal.download');
-
-Route::get('/proposals/{id}', [App\Http\Controllers\ProposalController::class, 'show'])->name('proposals.show');
-
-
-
-
-Route::get('lang/{locale}', function ($locale) {
-    if (in_array($locale, ['en', 'id'])) {
-        Session::put('locale', $locale);
-    }
-    return redirect()->back();
-})->name('switch.language');
-
-Route::get('/fund-realization-report', FundRealizationReport::class)->name('report.fund');
-
-// ... di dalam middleware auth group
-Route::get('/fund-realization/{id}/edit', FundRealizationReportEdit::class)->name('report.fund.edit');
-
-// Pastikan ID disesuaikan dengan parameter di Component
-Route::get('/fund-realization-report/{id}/view', \App\Livewire\FundRealizationReportShow::class)->name('report.fund.show');
-
-
-
-Route::get('/fund-realization/{id}/download-pdf', [FundRealizationController::class, 'downloadPdf'])
-    ->name('report.fund.download');
-
-
-
-
-
-Route::get('/dashboard-peneliti', function () {
-     $user = Auth::user();
-    return view('dashboard-peneliti', compact('user'));
-})->name('dashboard-peneliti')
-->middleware('peneliti');
-
-
-Route::get('/progress', [App\Http\Controllers\DashboardController::class, 'progress']);
-Route::get('/final', [App\Http\Controllers\DashboardController::class, 'final'])->name('final');
-Route::get('/final/new', [App\Http\Controllers\DashboardController::class, 'createFinal']);
-Route::post('/final', [App\Http\Controllers\DashboardController::class, 'storeFinal']);
-Route::get('/final/download/{id}', [App\Http\Controllers\DashboardController::class, 'downloadFinal'])->name('final.download');
-Route::get('/final/view/{id}', [App\Http\Controllers\DashboardController::class, 'showFinal'])->name('final.view');
-Route::delete('/final/{id}', [App\Http\Controllers\DashboardController::class, 'destroyFinal'])->name('final.destroy');
-Route::get('/progress/new', [App\Http\Controllers\DashboardController::class, 'createProgress']);
-Route::post('/progress', [App\Http\Controllers\DashboardController::class, 'storeProgress']);
-Route::get('/progress/download/{id}', [App\Http\Controllers\DashboardController::class, 'downloadPdf'])->name('progress.download');
-Route::delete('/progress/{id}', [App\Http\Controllers\DashboardController::class, 'destroy'])->name('progress.destroy');
-Route::get('/progress/view/{id}', [App\Http\Controllers\DashboardController::class, 'showPdf'])->name('progress.view');
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760

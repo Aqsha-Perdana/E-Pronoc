@@ -1,8 +1,5 @@
 <x-layouts.app>
-<<<<<<< HEAD
     <x-slot name="title">View Proposal</x-slot>
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
     <div class="container mx-auto px-4 py-8">
         
         {{-- Header Page --}}
@@ -61,31 +58,16 @@
                             @foreach($sections as $id => $label)
                                 <li class="relative {{ !$loop->last ? 'pb-8' : '' }}">
                                     @if(!$loop->last)
-<<<<<<< HEAD
-=======
-                                        {{-- Garis Penghubung (Dibuat putus-putus halus) --}}
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
                                         <div class="absolute top-4 left-3.5 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></div>
                                     @endif
                                     
                                     <a href="#{{ $id }}" class="relative flex items-center group w-full focus:outline-none">
-<<<<<<< HEAD
                                         <span class="h-7 flex items-center" aria-hidden="true">
                                             <span class="relative z-10 w-7 h-7 flex items-center justify-center rounded-full border-2 border-gray-300 bg-white group-hover:border-red-500 group-hover:bg-red-50 group-focus:ring-2 group-focus:ring-red-500 transition-all duration-300 shadow-sm">
-=======
-                                        {{-- Lingkaran Indikator --}}
-                                        <span class="h-7 flex items-center" aria-hidden="true">
-                                            <span class="relative z-10 w-7 h-7 flex items-center justify-center rounded-full border-2 border-gray-300 bg-white group-hover:border-red-500 group-hover:bg-red-50 group-focus:ring-2 group-focus:ring-red-500 transition-all duration-300 shadow-sm">
-                                                {{-- Dot di tengah (akan menyala merah saat di-hover/aktif) --}}
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
                                                 <span class="h-2 w-2 bg-gray-300 rounded-full group-hover:bg-red-600 transition-colors duration-300"></span>
                                             </span>
                                         </span>
                                         
-<<<<<<< HEAD
-=======
-                                        {{-- Teks Label --}}
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
                                         <span class="ml-4 min-w-0 flex flex-col">
                                             <span class="text-sm font-medium text-gray-500 group-hover:text-red-700 group-hover:font-bold transition-all duration-300 transform group-hover:translate-x-1">
                                                 {{ $label }}
@@ -104,35 +86,17 @@
                 
                 {{-- 1. GENERAL INFO --}}
                 <div id="general" class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 scroll-mt-24">
-<<<<<<< HEAD
                     <div class="flex items-center gap-3 border-b border-gray-100 pb-4 mb-6">
                         <div class="w-1 h-6 bg-red-600 rounded-full"></div>
                         <h2 class="text-lg font-bold text-gray-800">General Information</h2>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-8">
-=======
-                    
-                    {{-- Header Minimalis --}}
-                    <div class="flex items-center gap-3 border-b border-gray-100 pb-4 mb-6">
-                        <div class="w-1 h-6 bg-red-600 rounded-full"></div> {{-- Aksen Merah Simpel --}}
-                        <h2 class="text-lg font-bold text-gray-800">General Information</h2>
-                    </div>
-
-                    {{-- Konten --}}
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-8">
-                        
-                        {{-- Proposal Title (Full Width) --}}
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
                         <div class="md:col-span-2">
                             <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Proposal Title</label>
                             <p class="text-xl font-bold text-gray-900 leading-snug">{{ $proposal->title }}</p>
                         </div>
 
-<<<<<<< HEAD
-=======
-                        {{-- Registration Code --}}
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
                         <div>
                             <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Registration Code</label>
                             <div class="flex items-center gap-2">
@@ -142,10 +106,6 @@
                             </div>
                         </div>
 
-<<<<<<< HEAD
-=======
-                        {{-- Submission Date --}}
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
                         <div>
                             <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Submission Date</label>
                             <div class="flex items-center gap-2 text-gray-900">
@@ -156,10 +116,6 @@
                             </div>
                         </div>
 
-<<<<<<< HEAD
-=======
-                        {{-- Focus Area --}}
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
                         <div>
                             <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Focus Area</label>
                             <div class="flex items-center gap-2 text-gray-800 bg-white border border-gray-200 px-3 py-2 rounded-lg w-fit">
@@ -168,10 +124,6 @@
                             </div>
                         </div>
 
-<<<<<<< HEAD
-=======
-                        {{-- Output Target --}}
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
                         <div>
                             <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Output Target</label>
                             <div class="flex items-center gap-2 text-gray-800 bg-white border border-gray-200 px-3 py-2 rounded-lg w-fit">
@@ -179,10 +131,6 @@
                                 <span class="text-sm font-medium">{{ $proposal->output }}</span>
                             </div>
                         </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
                     </div>
                 </div>
 
@@ -194,22 +142,14 @@
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<<<<<<< HEAD
                         @foreach($proposal->teamMembers as $member)
                             <div class="flex items-start p-4 bg-white border border-gray-200 rounded-lg hover:border-red-200 transition-colors">
                                 <div class="h-10 w-10 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center font-bold text-sm border border-gray-200 shrink-0">
-=======
-                        @foreach($proposal->members as $member)
-                            <div class="flex items-start p-4 bg-white border border-gray-200 rounded-lg hover:border-red-200 transition-colors">
-                                {{-- Avatar Inisial --}}
-                                <div class="h-10 w-10 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center font-bold text-sm border border-gray-200">
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
                                     {{ substr($member->name, 0, 1) }}
                                 </div>
                                 
                                 <div class="ml-3 flex-1 min-w-0">
                                     <div class="flex justify-between items-start">
-<<<<<<< HEAD
                                         <div class="min-w-0 flex-1 mr-2">
                                             <h4 class="text-sm font-bold text-gray-900 truncate">{{ $member->name }}</h4>
                                             <p class="text-xs text-gray-500 font-mono mt-0.5 truncate">{{ $member->nip }}</p>
@@ -221,20 +161,6 @@
                                     <div class="flex items-center gap-1 mt-2 text-xs text-gray-500 truncate">
                                         <svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                                         <span class="truncate">{{ $member->email }}</span>
-=======
-                                        <div>
-                                            <h4 class="text-sm font-bold text-gray-900 truncate">{{ $member->name }}</h4>
-                                            <p class="text-xs text-gray-500 font-mono mt-0.5">{{ $member->nip }}</p>
-                                        </div>
-                                        {{-- Role Badge Minimalis --}}
-                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium {{ $member->pivot->role == 'Ketua' ? 'text-red-700 bg-red-50 border border-red-100' : 'text-gray-600 bg-gray-50 border border-gray-200' }}">
-                                            {{ $member->pivot->role }}
-                                        </span>
-                                    </div>
-                                    <div class="flex items-center gap-1 mt-2 text-xs text-gray-500">
-                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                                        {{ $member->email }}
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
                                     </div>
                                 </div>
                             </div>
@@ -273,18 +199,10 @@
                         <h2 class="text-lg font-bold text-gray-800">Research Fund</h2>
                     </div>
                     
-<<<<<<< HEAD
                     @php
                         $total = ($proposal->budget->direct_personnel_cost_proposal ?? 0) + 
                                 ($proposal->budget->non_personnel_cost_proposal ?? 0) + 
                                 ($proposal->budget->indirect_cost_proposal ?? 0);
-=======
-                    {{-- Total Summary Card --}}
-                    @php
-                        $total = ($proposal->budget->direct_personnel_cost_proposal ?? 0) + 
-                                 ($proposal->budget->non_personnel_cost_proposal ?? 0) + 
-                                 ($proposal->budget->indirect_cost_proposal ?? 0);
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
                     @endphp
                     
                     <div class="bg-gray-50 rounded-lg p-5 mb-6 border border-gray-200 flex flex-col sm:flex-row justify-between items-center gap-4">
@@ -296,7 +214,6 @@
                             </div>
                         </div>
                         
-<<<<<<< HEAD
                         {{-- Tombol Download RAB --}}
                         @if($proposal->budget && $proposal->budget->document_rab_proposal)
                             <a href="{{ asset('storage/' . $proposal->budget->document_rab_proposal) }}" 
@@ -315,18 +232,6 @@
                         @endif
                     </div>
 
-=======
-                        {{-- Tombol Download RAB Kecil & Rapi --}}
-                        @if($proposal->budget && $proposal->budget->document_rab)
-                            <a href="{{ asset('storage/' . $proposal->budget->document_rab) }}" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-red-600 hover:border-red-200 transition-all shadow-sm">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                                Download RAB
-                            </a>
-                        @endif
-                    </div>
-
-                    {{-- Detail Biaya --}}
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         @foreach([
                             'Direct Personnel' => $proposal->budget->direct_personnel_cost_proposal ?? 0,
@@ -341,11 +246,7 @@
                     </div>
                 </div>
 
-<<<<<<< HEAD
                 {{-- 5. PROPOSAL CONTENT (CORRECTED SECTION) --}}
-=======
-                {{-- 5. PROPOSAL CONTENT --}}
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
                 <div id="content" class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 scroll-mt-24">
                     <div class="flex items-center gap-3 border-b border-gray-100 pb-4 mb-6">
                         <div class="w-1 h-6 bg-red-600 rounded-full"></div>
@@ -358,12 +259,8 @@
                                 <h3 class="text-sm font-bold text-gray-900 uppercase tracking-wide mb-3 flex items-center gap-2">
                                     <span class="w-1.5 h-1.5 bg-gray-300 rounded-full"></span> {{ $title }}
                                 </h3>
-<<<<<<< HEAD
                                 {{-- Added break-all and overflow-wrap classes here --}}
                                 <div class="prose prose-sm max-w-none text-gray-600 bg-gray-50/50 p-4 rounded-lg border border-gray-100 break-words overflow-hidden">
-=======
-                                <div class="prose prose-sm max-w-none text-gray-600 bg-gray-50/50 p-4 rounded-lg border border-gray-100">
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
                                     {!! $proposal->$key !!}
                                 </div>
                             </div>

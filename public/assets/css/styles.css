@@ -18,7 +18,6 @@ body {
     padding: 0 1.5rem;
 }
 
-<<<<<<< HEAD
 /* Keyframe Animations */
 @keyframes fadeInDown {
     from {
@@ -93,8 +92,6 @@ body {
     }
 }
 
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 /* Navigation */
 .navbar {
     background-color: #ffffff;
@@ -105,10 +102,7 @@ body {
     right: 0;
     z-index: 1000;
     padding: 1rem 0;
-<<<<<<< HEAD
     animation: fadeInDown 0.6s ease;
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .nav-wrapper {
@@ -122,24 +116,18 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-<<<<<<< HEAD
     animation: fadeInLeft 0.8s ease;
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .logo-img-large {
     height: 3rem;
     width: auto;
     object-fit: contain;
-<<<<<<< HEAD
     transition: transform 0.3s ease;
 }
 
 .logo-img-large:hover {
     transform: scale(1.1);
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .logo-text {
@@ -154,10 +142,7 @@ body {
 .nav-menu {
     display: flex;
     gap: 0.25rem;
-<<<<<<< HEAD
     animation: fadeInDown 0.8s ease 0.2s both;
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .nav-link {
@@ -167,7 +152,6 @@ body {
     font-size: 0.875rem;
     font-weight: 500;
     border-radius: 0.375rem;
-<<<<<<< HEAD
     transition: all 0.3s ease;
     position: relative;
 }
@@ -186,18 +170,12 @@ body {
 
 .nav-link:hover::after {
     width: 80%;
-=======
-    transition: all 0.2s;
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .nav-link:hover {
     background-color: #fef2f2;
     color: #dc2626;
-<<<<<<< HEAD
     transform: translateY(-2px);
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .btn-login {
@@ -208,30 +186,20 @@ body {
     text-decoration: none;
     font-size: 0.875rem;
     font-weight: 600;
-<<<<<<< HEAD
     transition: all 0.3s ease;
-=======
-    transition: background-color 0.2s;
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-<<<<<<< HEAD
     animation: fadeInRight 0.8s ease 0.3s both;
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .btn-login:hover {
     background-color: #b91c1c;
-<<<<<<< HEAD
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(220, 38, 38, 0.3);
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .btn-login.active {
@@ -241,11 +209,7 @@ body {
 .dropdown-icon {
     width: 1rem;
     height: 1rem;
-<<<<<<< HEAD
     transition: transform 0.3s ease;
-=======
-    transition: transform 0.2s;
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .btn-login.active .dropdown-icon {
@@ -269,11 +233,7 @@ body {
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
-<<<<<<< HEAD
     transition: all 0.3s ease;
-=======
-    transition: all 0.2s ease;
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
     z-index: 1000;
 }
 
@@ -293,38 +253,25 @@ body {
     font-size: 0.875rem;
     font-weight: 500;
     border-radius: 0.375rem;
-<<<<<<< HEAD
     transition: all 0.3s ease;
-=======
-    transition: all 0.2s;
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .dropdown-item:hover {
     background-color: #fef2f2;
     color: #dc2626;
-<<<<<<< HEAD
     transform: translateX(5px);
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .item-icon {
     width: 1.25rem;
     height: 1.25rem;
     color: #6b7280;
-<<<<<<< HEAD
     transition: all 0.3s ease;
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .dropdown-item:hover .item-icon {
     color: #dc2626;
-<<<<<<< HEAD
     transform: scale(1.1);
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 /* Mobile Menu Button */
@@ -368,15 +315,12 @@ body {
     border-radius: 1.5rem;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     padding: 3rem;
-<<<<<<< HEAD
     animation: scaleIn 0.8s ease;
     transition: box-shadow 0.3s ease;
 }
 
 .hero-card:hover {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .hero-content {
@@ -395,10 +339,7 @@ body {
     color: #6b7280;
     margin-bottom: 1.5rem;
     font-size: 0.95rem;
-<<<<<<< HEAD
     animation: fadeInLeft 1s ease 0.2s both;
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .highlight {
@@ -412,37 +353,27 @@ body {
     line-height: 1.2;
     margin-bottom: 1.5rem;
     color: #111827;
-<<<<<<< HEAD
     animation: fadeInLeft 1s ease 0.4s both;
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .hero-description {
     color: #6b7280;
     line-height: 1.8;
     font-size: 0.95rem;
-<<<<<<< HEAD
     animation: fadeInLeft 1s ease 0.6s both;
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .hero-logo {
     display: flex;
     justify-content: center;
     align-items: center;
-<<<<<<< HEAD
     animation: fadeInRight 1s ease 0.5s both;
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .indonesia-logo {
     width: 100%;
     max-width: 20rem;
     height: auto;
-<<<<<<< HEAD
     animation: float 3s ease-in-out infinite;
     transition: transform 0.3s ease;
 }
@@ -450,17 +381,12 @@ body {
 .indonesia-logo:hover {
     animation-play-state: paused;
     transform: scale(1.05);
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 /* Chart Section */
 .chart-section {
     margin-top: 4rem;
-<<<<<<< HEAD
     animation: fadeInUp 1s ease 0.8s both;
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .chart-title {
@@ -481,7 +407,6 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
-<<<<<<< HEAD
     animation: fadeInLeft 0.6s ease both;
     transition: transform 0.3s ease;
 }
@@ -497,8 +422,6 @@ body {
 
 .chart-item:hover {
     transform: translateX(10px);
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .chart-label {
@@ -525,7 +448,6 @@ body {
     padding-right: 1rem;
     border-radius: 9999px;
     background-color: #dc2626;
-<<<<<<< HEAD
     transition: all 0.8s ease;
     position: relative;
     overflow: hidden;
@@ -544,9 +466,6 @@ body {
 
 .chart-item:hover .chart-bar::before {
     left: 100%;
-=======
-    transition: width 0.5s ease;
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .chart-bar.bar-yellow {
@@ -581,11 +500,8 @@ body {
     color: #ffffff;
     font-size: 0.875rem;
     font-weight: 600;
-<<<<<<< HEAD
     position: relative;
     z-index: 1;
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 /* Footer */
@@ -594,10 +510,7 @@ body {
     color: #ffffff;
     padding: 3rem 1.5rem;
     margin-top: 4rem;
-<<<<<<< HEAD
     animation: fadeInUp 1s ease 1.7s both;
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .footer-content {
@@ -608,29 +521,20 @@ body {
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
-<<<<<<< HEAD
     animation: fadeInUp 0.6s ease 1.8s both;
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .footer-subtitle {
     margin-bottom: 1.5rem;
     font-size: 0.95rem;
-<<<<<<< HEAD
     animation: fadeInUp 0.6s ease 1.9s both;
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .footer-logo {
     display: flex;
     justify-content: center;
     margin-bottom: 1.5rem;
-<<<<<<< HEAD
     animation: fadeInUp 0.6s ease 2s both;
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .koi-logo {
@@ -640,7 +544,6 @@ body {
     background-color: #ffffff;
     border-radius: 0.5rem;
     padding: 0.5rem;
-<<<<<<< HEAD
     transition: transform 0.3s ease;
     animation: pulse 2s ease-in-out infinite;
 }
@@ -648,17 +551,12 @@ body {
 .koi-logo:hover {
     transform: rotate(5deg) scale(1.1);
     animation-play-state: paused;
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .footer-address {
     margin-bottom: 1.5rem;
     line-height: 1.8;
-<<<<<<< HEAD
     animation: fadeInUp 0.6s ease 2.1s both;
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .address-title {
@@ -668,37 +566,24 @@ body {
 .footer-social-text {
     margin-bottom: 1rem;
     font-size: 0.875rem;
-<<<<<<< HEAD
     animation: fadeInUp 0.6s ease 2.2s both;
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .social-icons {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
-<<<<<<< HEAD
     animation: fadeInUp 0.6s ease 2.3s both;
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .social-icon {
     color: #ffffff;
-<<<<<<< HEAD
     transition: all 0.3s ease;
-=======
-    transition: opacity 0.2s;
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .social-icon:hover {
     opacity: 0.8;
-<<<<<<< HEAD
     transform: translateY(-5px) scale(1.2);
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 }
 
 .social-icon svg {
@@ -706,7 +591,6 @@ body {
     height: 2rem;
 }
 
-<<<<<<< HEAD
 /* Smooth Scroll Behavior */
 html {
     scroll-behavior: smooth;
@@ -1423,5 +1307,3 @@ html {
         font-size: 1.75rem;
     }
 }
-=======
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760

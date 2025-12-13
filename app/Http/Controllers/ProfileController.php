@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
+use App\Http\Requests\ProfileUpdateRequest;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\View\View;
 
-class Profile extends Controller
+class ProfileController extends Controller
 {
     public function index()
 {
@@ -39,17 +43,7 @@ public function update(Request $request)
 
     return back()->with('success', 'Profile updated!');
 }
-}
-=======
-use App\Http\Requests\ProfileUpdateRequest;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
 
-class ProfileController extends Controller
-{
     /**
      * Display the user's profile form.
      */
@@ -63,7 +57,7 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(Request $request)
+    public function updateAdmin(Request $request)
 {
     $user = auth()->user();
 
@@ -121,6 +115,3 @@ class ProfileController extends Controller
     return view('profile', compact('user'));
 }
 }
-
-
->>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760

@@ -9,6 +9,7 @@ class Proposal extends Model
 {
     use HasFactory;
 
+<<<<<<< HEAD
     // Mengizinkan mass assignment untuk semua kolom selain ID
     // Ini penting agar 'user_id', 'title', dll bisa diisi via create()
     protected $guarded = ['id'];
@@ -69,12 +70,51 @@ class Proposal extends Model
         return $this->hasOne(ProgressReport::class);
     }
 
+=======
+    protected $table = 'proposals';
+
+    protected $fillable = [
+        'user_id',
+        'registration_code',
+        'title',
+        'date',
+        'focus_area',
+        'focus',
+        'abstract',
+        'introduction',
+        'project_method',
+        'bibliography',
+        'statement_letter',
+        'status',
+    ];
+    public function teams()
+    {
+        return $this->hasMany(ProposalTeam::class, 'proposal_id');
+    }
+    public function budgets()
+    {
+        return $this->hasMany(Budgets::class);
+    }
+    public function user()
+{
+    return $this->belongsTo(User::class);
+}
+    public function progressReports()
+    {
+        return $this->hasMany(ProgressReport::class);
+    }
+
+    /**
+     * Get the final report for this project.
+     */
+>>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
     public function finalReport()
     {
         return $this->hasOne(FinalReport::class);
     }
 
     /**
+<<<<<<< HEAD
      * Relasi Realisasi Dana.
      * Sebenarnya datanya ada di tabel 'budgets' juga, 
      * tapi dipisahkan method-nya agar lebih semantik di controller.
@@ -84,3 +124,12 @@ class Proposal extends Model
         return $this->hasOne(Budget::class); 
     }
 }
+=======
+     * Get the latest progress report.
+     */
+    public function latestProgressReport()
+    {
+        return $this->progressReports()->latest()->first();
+    }
+}
+>>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760

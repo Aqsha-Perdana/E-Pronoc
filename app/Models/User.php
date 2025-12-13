@@ -17,7 +17,11 @@ class User extends Authenticatable
         'notelp',
         'institution',
         'photo',
+<<<<<<< HEAD
         'user_group', // GANTI 'role' JADI 'user_group'
+=======
+
+>>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
     ];
 
     protected $hidden = [
@@ -29,6 +33,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+<<<<<<< HEAD
     
     // Relasi ke Member (Profil)
     public function member()
@@ -36,3 +41,11 @@ class User extends Authenticatable
         return $this->hasOne(Member::class);
     }
 }
+=======
+    public function skills()
+{
+    return $this->hasMany(Skill::class);
+}
+}
+
+>>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760

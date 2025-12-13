@@ -15,7 +15,11 @@
         /* Set a custom background image with fallback color */
         .office-bg {
             /* Placeholder image URL for the background */
+<<<<<<< HEAD
             background-image: url('{{ asset('image/background2.jpg') }}'); 
+=======
+            background-image: url('{{ asset('images/background2.jpg') }}'); 
+>>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
             background-position: center; 
             background-size: cover;
             background-repeat: no-repeat;

@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 <x-slot name="title">View Fund Realization Report</x-slot>
+=======
+>>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
 <div class="min-h-screen bg-slate-50 py-10 px-4 sm:px-6 lg:px-8">
     <div class="max-w-5xl mx-auto">
         

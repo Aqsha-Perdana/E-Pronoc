@@ -2,51 +2,100 @@
 
 use App\Http\Controllers\DepanController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProposalSelectionController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SkillController;  
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\FundRealizationController;
 use App\Livewire\ProposalWizard;
 use App\Livewire\FundRealizationReport;
 use App\Livewire\FundRealizationReportEdit;
+use App\Livewire\FundRealizationReportShow; // Make sure to import this
+use App\Livewire\Profile;
+use App\Http\Controllers\ProposalSelectionController;
+use App\Http\Controllers\SkillController;
+use App\Http\Controllers\ProfileController;  
 
 
 /*s
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
 */
+// =================================================================
+// 1. AUTHENTICATION ROUTES (GUEST)
+// =================================================================
 
-////// NAVIGASI HEADERRRRRRRRR ///////////////////
-// Route::get('/', function () {
-//     return view('landingpage');
-// })->name('home');
-
-//PERLOGIN REGISTERAN
+// Admin Auth
 Route::get('/admin', [LoginController::class, 'showAdminLogin'])->name('login.admin');
 Route::post('/admin/login', [LoginController::class, 'loginAdmin'])->name('login.admin.submit');
 Route::get('/admin/logout', [LoginController::class, 'logout']);
-Route::get('/researcher', [LoginController::class, 'showResearcherLogin'])->name('login.researcher');
-Route::post('/researcher/login', [LoginController::class, 'loginResearcher'])->name('login.researcher.submit');
-Route::get('/researcher/register', [LoginController::class, 'register']);
-Route::post('/researcher/create', [LoginController::class, 'create']);
+
+// Researcher Auth
+Route::get('/researcher/login', [LoginController::class, 'showResearcherLogin'])->name('researcher.login');
+Route::post('/researcher/login', [LoginController::class, 'loginResearcher'])->name('researcher.login.post');
+Route::get('/researcher/register', [LoginController::class, 'register'])->name('researcher.register');
+Route::post('/researcher/create', [LoginController::class, 'create'])->name('researcher.create');
+
+// General Logout
 Route::get("/logout", function(){
-    return view("logout");
+    return view("logout"); // Ensure you have a 'logout.blade.php' view
 });
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //NAVIGASI DI LANDING PAGE//
 Route::get('/', [DepanController::class,'index']);
 Route::get('/pusatinformasi', [DepanController::class,'pusatinformasi']);
 Route::get('/proyek', [DepanController::class,'proyek']);
 Route::get('/tentang', [DepanController::class,'tentang']);
+
+// =================================================================
+// 2. PROTECTED ROUTES (REQUIRES LOGIN)
+// =================================================================
+
+Route::middleware(['auth'])->group(function () {
+
+    // --- DASHBOARD ---
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // --- PROFILE ---
+    Route::get('/profile', Profile::class)->name('profile');
+
+    // --- PROPOSAL MANAGEMENT ---
+    Route::get('/proposalutama', [ProposalController::class, 'index'])->name('mainproposalutama');
+    Route::get('/proposals/create', ProposalWizard::class)->name('proposals.create');
+    Route::get('/proposals/{id}', [ProposalController::class, 'show'])->name('proposals.show');
+    Route::get('/proposal/{id}/download', [ProposalController::class, 'download'])->name('proposal.download');
+
+    // --- PROGRESS REPORT ---
+    Route::prefix('progress')->name('progress.')->group(function () {
+        Route::get('/', [DashboardController::class, 'progress'])->name('index');
+        Route::get('/{id}/edit', [DashboardController::class, 'editProgress'])->name('edit');
+        Route::put('/{id}', [DashboardController::class, 'updateProgress'])->name('update');
+        Route::delete('/{id}', [DashboardController::class, 'destroy'])->name('destroy');
+        Route::get('/{id}/view', [DashboardController::class, 'showPdf'])->name('view');
+        Route::get('/{id}/download', [DashboardController::class, 'downloadPdf'])->name('download');
+    });
+
+    // --- FINAL REPORT ---
+    Route::prefix('final')->name('final.')->group(function () {
+        Route::get('/', [DashboardController::class, 'final'])->name('index'); // Changed from name('final') to name('final.index') for consistency, but you can keep 'final'
+        Route::post('/', [DashboardController::class, 'storeFinal'])->name('store');
+        Route::get('/{id}/edit', [DashboardController::class, 'editFinal'])->name('edit');
+        Route::delete('/{id}', [DashboardController::class, 'destroyFinal'])->name('destroy');
+        Route::get('/download/{id}', [DashboardController::class, 'downloadFinal'])->name('download');
+        Route::get('/view/{id}', [DashboardController::class, 'showFinal'])->name('view');
+    });
+    // Alias for 'final' route to match your controller return if you use route('final')
+    Route::get('/final-list', [DashboardController::class, 'final'])->name('final'); 
+
+
+    // --- FUND REALIZATION REPORT ---
+    Route::get('/fund-realization-report', FundRealizationReport::class)->name('report.fund');
+    Route::get('/fund-realization/{id}/edit', FundRealizationReportEdit::class)->name('report.fund.edit');
+    Route::get('/fund-realization-report/{id}/view', FundRealizationReportShow::class)->name('report.fund.show');
+    Route::get('/fund-realization/{id}/download-pdf', [FundRealizationController::class, 'downloadPdf'])->name('report.fund.download');
+
+});
 
 
 
@@ -120,59 +169,3 @@ Route::prefix('proposalsel')->name('proposalsel.')->group(function () {
 });
 
 Route::post('/proposalsel/{page?}', [ProposalController::class, 'accept'])->name('proposal.done');
-
-// Route Dashboard (Pastikan name-nya 'dashboard' karena dipakai di redirect Livewire)
-Route::get('/proposal-submission', [ProposalController::class, 'index'])->name('mainproposalutama');
-// Pastikan sudah dibungkus middleware auth jika perlu
-Route::get('/proposals/create', ProposalWizard::class)->name('proposals.create');
-// Route Download PDF
-Route::get('/proposal/{id}/download', [ProposalController::class, 'download'])->name('proposal.download');
-
-Route::get('/proposals/{id}', [App\Http\Controllers\ProposalController::class, 'show'])->name('proposals.show');
-
-
-
-
-Route::get('lang/{locale}', function ($locale) {
-    if (in_array($locale, ['en', 'id'])) {
-        Session::put('locale', $locale);
-    }
-    return redirect()->back();
-})->name('switch.language');
-
-Route::get('/fund-realization-report', FundRealizationReport::class)->name('report.fund');
-
-// ... di dalam middleware auth group
-Route::get('/fund-realization/{id}/edit', FundRealizationReportEdit::class)->name('report.fund.edit');
-
-// Pastikan ID disesuaikan dengan parameter di Component
-Route::get('/fund-realization-report/{id}/view', \App\Livewire\FundRealizationReportShow::class)->name('report.fund.show');
-
-
-
-Route::get('/fund-realization/{id}/download-pdf', [FundRealizationController::class, 'downloadPdf'])
-    ->name('report.fund.download');
-
-
-
-
-
-Route::get('/dashboard-peneliti', function () {
-     $user = Auth::user();
-    return view('dashboard-peneliti', compact('user'));
-})->name('dashboard-peneliti')
-->middleware('peneliti');
-
-
-Route::get('/progress', [App\Http\Controllers\DashboardController::class, 'progress']);
-Route::get('/final', [App\Http\Controllers\DashboardController::class, 'final'])->name('final');
-Route::get('/final/new', [App\Http\Controllers\DashboardController::class, 'createFinal']);
-Route::post('/final', [App\Http\Controllers\DashboardController::class, 'storeFinal']);
-Route::get('/final/download/{id}', [App\Http\Controllers\DashboardController::class, 'downloadFinal'])->name('final.download');
-Route::get('/final/view/{id}', [App\Http\Controllers\DashboardController::class, 'showFinal'])->name('final.view');
-Route::delete('/final/{id}', [App\Http\Controllers\DashboardController::class, 'destroyFinal'])->name('final.destroy');
-Route::get('/progress/new', [App\Http\Controllers\DashboardController::class, 'createProgress']);
-Route::post('/progress', [App\Http\Controllers\DashboardController::class, 'storeProgress']);
-Route::get('/progress/download/{id}', [App\Http\Controllers\DashboardController::class, 'downloadPdf'])->name('progress.download');
-Route::delete('/progress/{id}', [App\Http\Controllers\DashboardController::class, 'destroy'])->name('progress.destroy');
-Route::get('/progress/view/{id}', [App\Http\Controllers\DashboardController::class, 'showPdf'])->name('progress.view');

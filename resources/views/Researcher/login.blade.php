@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-PRONOC Login </title>
+<<<<<<< HEAD
+    <link rel="shortcut icon" type="image/png" href="{{ asset('image/tab1.png') }}" />
+=======
+>>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -15,7 +19,11 @@
         /* Set a custom background image with fallback color */
         .office-bg {
             /* Placeholder image URL for the background */
+<<<<<<< HEAD
+            background-image: url('{{ asset('image/background.jpeg') }}'); 
+=======
             background-image: url('{{ asset('images/background.jpeg') }}'); 
+>>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
@@ -68,7 +76,11 @@
             Single Account, Single Sign On login:
         </p>
 
+<<<<<<< HEAD
+        <form method="POST" action="{{ route('researcher.login.post') }}">
+=======
         <form method="POST" action="researcher/login">
+>>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
             @csrf
 
             <!-- Display errors -->
@@ -117,10 +129,20 @@
             </button>
 
             <!-- Register Link -->
+<<<<<<< HEAD
+            <div class="mt-6 text-center">
+                <p class="text-sm text-gray-600">
+                    Don't have an account? 
+                    <a href="{{ route('researcher.register') }}" class="font-bold text-pronoc-red hover:text-pronoc-red-dark hover:underline transition duration-200">
+                        Register Now
+                    </a>
+                </p>
+=======
             <div class="mt-4 text-center">
                 <a href="researcher/register" class="text-sm font-bold text-pronoc-red hover:underline transition duration-150">
                     Register
                 </a>
+>>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
             </div>
 
         </form>

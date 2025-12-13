@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title ?? 'Sistem Pengajuan Proposal' }}</title>
+    <title>E-PRONOC{{ isset($title) ? ' | ' . $title : '' }}</title>
+
+    <link rel="shortcut icon" type="image/png" href="{{ asset('image/tab1.png') }}" />
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -34,10 +36,14 @@
 
                 {{-- BRANDING --}}
                 <a href="/dashboard" class="flex items-center gap-3 group">
-                    <img src="{{ asset('images/icon-epronoc.png') }}" alt="E-PRONOC Logo" class="h-8 w-auto object-contain group-hover:scale-105 transition-transform duration-200" />
-                    <span class="self-center text-2xl whitespace-nowrap select-none">
+                    {{-- UBAH h-8 MENJADI h-14 (atau lebih besar sesuai selera) --}}
+                    <img src="{{ asset('image/logo.png') }}" 
+                        alt="E-PRONOC Logo" 
+                        class="h-14 w-auto object-contain group-hover:scale-105 transition-transform duration-200" />
+                        
+                    {{-- <span class="self-center text-2xl whitespace-nowrap select-none">
                         <span class="font-extrabold text-gray-800 tracking-tight">E-</span><span class="font-black text-red-600 tracking-tight">PRONOC</span>
-                    </span>
+                    </span> --}}
                 </a>
             </div>
             

@@ -4,7 +4,8 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Budgets;
+use App\Models\Budget;
+use Illuminate\Support\Facades\Auth; // Don't forget to import Auth!
 
 class FundRealizationReport extends Component
 {
@@ -13,34 +14,38 @@ class FundRealizationReport extends Component
     public $perPage = 10;
     public $search = '';
 
-    // Reset pagination saat search berubah
+    // Reset pagination when search changes
     public function updatingSearch()
     {
         $this->resetPage();
     }
 
     public function render()
-{
-    $budgets = Budgets::with('proposal')
-        ->whereHas('proposal', function($query) {
-            $query->where('title', 'like', '%' . $this->search . '%');
-        })
-        // PENTING: Filter logika gabungan
-        ->where(function($query) {
-            // Tampilkan jika Budget statusnya sudah 'Done'
-            $query->where('status', 'Done')
-                  // ATAU jika Proposal statusnya 'Approved' (ini yang akan jadi Active)
-                  ->orWhereHas('proposal', function($q) {
-                      $q->where('status', 'Approved'); 
-                  });
-        })
-        ->orderBy('id', 'desc')
-        ->paginate($this->perPage);
+    {
+        $userId = Auth::id(); // Get current user ID
 
-    return view('livewire.fund-realization-report', [
-        'budgets' => $budgets
-    ]);
+        $budgets = Budget::with('proposal')
+            // 1. FILTER BY USER (OWNERSHIP)
+            ->whereHas('proposal.teamMembers', function($q) use ($userId) {
+                $q->where('user_id', $userId);
+            })
+            // 2. SEARCH FILTER
+            ->whereHas('proposal', function($query) {
+                $query->where('title', 'like', '%' . $this->search . '%');
+            })
+            // 3. STATUS LOGIC
+            ->where(function($query) {
+                // Show if Budget status is 'Done' OR Proposal is 'Approved'
+                $query->where('status', 'Done')
+                      ->orWhereHas('proposal', function($q) {
+                          $q->where('status', 'Approved'); 
+                      });
+            })
+            ->orderBy('id', 'desc')
+            ->paginate($this->perPage);
+
+        return view('livewire.fund-realization-report', [
+            'budgets' => $budgets
+        ]);
+    }
 }
-}
-
-

@@ -10,29 +10,18 @@ class ProgressReport extends Model
     use HasFactory;
 
     protected $fillable = [
-        'proposal_id',
-        'report_date',
-        'progress_description',
-        'percentage_complete',
-        'status',
-        'notes',
-        'focus_area',
-        'focus',
-        'introduction',
-        'project_method',
-        'results',
-        'bibliography',
+        'proposal_id', 'report_date', 'percentage_complete', 'status', 
+        'activities', 'results', 'obstacles', 'next_steps', 'attachments', 'notes'
     ];
 
-    protected $casts = [
-        'report_date' => 'date',
-    ];
-
-    /**
-     * Get the project this report belongs to.
-     */
     public function proposal()
     {
         return $this->belongsTo(Proposal::class);
+    }
+    
+    // Relasi ke Final Report (Jika ingin mengecek dari sisi Progress)
+    public function finalReport()
+    {
+        return $this->hasOne(FinalReport::class, 'proposal_id', 'proposal_id');
     }
 }

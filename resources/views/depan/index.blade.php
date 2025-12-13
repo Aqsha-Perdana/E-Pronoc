@@ -15,7 +15,11 @@
                         </h1>
                         
                         <p class="hero-description">
+<<<<<<< HEAD
+                            <span class="highlight">E-Pronoc</span> (Proposal NOC Elektronik) adalah sistem digital yang
+=======
                             <span class="highlight">e-Pronoc</span> (Proposal NOC Elektronik) adalah sistem digital yang
+>>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
                             dirancang untuk mempermudah proses pengajuan, pengelolaan, dan
                             persetujuan proposal NOC secara terintegrasi. Aplikasi ini
                             menghadirkan solusi dalam tiga mitra utama yang membaca sistem
@@ -27,7 +31,11 @@
 
                     <!-- Right Content - Logo Indonesia -->
                     <div class="hero-logo">
+<<<<<<< HEAD
+                        <img src="{{ asset('image/logo NOA Indonesia.png') }}" alt="Logo Indonesia NOC" class="indonesia-logo">
+=======
                         <img src="{{ asset('images/logo NOA Indonesia.png') }}" alt="Logo Indonesia NOC" class="indonesia-logo">
+>>>>>>> e68c7900a429ca0a02a86e7a4345c04cba74b760
                     </div>
                 </div>
                 <!-- Chart Section -->
